@@ -1,0 +1,196 @@
+
+/* ==========================================================================
+   0. RESET GLOBAL (Obligatorio al inicio del archivo)
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* El contenedor PADRE de toda la barra de navegación */
+.barra-navegacion {
+    display: flex;                  /* Activamos Flexbox en el padre */
+    flex-direction: column;         /* Requisito: Alineación vertical de los elementos hijos */
+    align-items: center;            /* Requisito: Alineación vertical perfecta */
+    gap: 15px;                       /* Requisito: Espaciado uniforme entre cada elemento hijo */
+    background-color: #202024;    /* Un gris un toque más claro que el fondo */
+    padding: 20px 40px;             /* Requisito Box Model: espacio interno para que respire */
+}
+/* El contenedor PADRE que agrupa solo a los enlaces de texto */
+.menu-enlaces ul {
+    display: flex;                  /* También es padre de los enlaces */
+    gap: 20px;                      /* Requisito: Espaciado uniforme entre cada link */
+    list-style: none;
+}
+
+.navbar {
+    background-color: #202024;
+    padding: 20px 40px;
+}
+
+.navbar-brand {
+    color: #eeeeee;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.navbar-toggler {
+    border-color: #00adb5;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2800, 173, 181, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.card {
+    background-color: #202024;
+    border: none;
+}
+
+.card-title {
+    color: #00adb5;
+}
+
+.card-text {
+    color: #c4c4cc;
+}
+
+.badge {
+    background-color: #00adb5 !important;
+    color: #121214;
+    font-weight: 700;
+}
+
+.btn-primary {
+    background-color: #00adb5;
+    border-color: #00adb5;
+    color: #121214;
+    font-weight: 700;
+}
+
+.btn-primary:hover {
+    background-color: #ff2e63;
+    border-color: #ff2e63;
+    color: #eeeeee;
+}
+
+/* ==========================================================================
+   1. CONFIGURACIÓN GENERAL Y PALETA DE COLORES
+   ========================================================================== */
+
+/* La etiqueta 'body' representa a TODA la pantalla de la página */
+body {
+    /* Aplicamos la tipografía de Google Fonts que enlazamos en el HTML */
+    /* 'sans-serif' es el fallback: si no hay internet, usa la letra sin serif por defecto del sistema */
+    font-family: 'Abel', sans-serif;
+    
+    /* Requisito: Fondo personalizado (Color sólido oscuro) */
+    background-color: #121214; 
+    
+    /* Requisito: Color secundario para el texto general, garantizando buen contraste */
+    color: #e1e1e6; 
+    
+    /* Quitamos márgenes molestos que los navegadores traen por defecto */
+    margin: 0;
+    padding: 0;
+    min-height: 100vh; /* Requisito: Ocupa toda la altura de la ventana del navegador */
+    display: flex; /* Activamos Flexbox para centrar el contenido principal */
+    flex-direction: column; /* Alineamos los elementos de arriba hacia abajo */
+}
+/* ==========================================================================
+   2. JERARQUÍA VISUAL DE TEXTOS (Títulos y Cuerpo)
+   ========================================================================== */
+
+/* Requisito: h1 claramente más grande y llamativo */
+h1 {
+    font-size: 38px;       /* Tamaño grande para el título principal */
+    font-weight: 700;      /* Grosor pesado/negrita */
+    color: #00adb5;        /* Nuestro Color Primario (Turquesa) */
+    margin-bottom: 20px;   /* Espacio libre abajo del título */
+}
+
+/* Títulos de las secciones secundarias */
+h2 {
+    font-size: 26px;       /* Tamaño intermedio */
+    font-weight: 700;      /* También en negrita para resaltar la sección */
+    color: #eeeeee;        /* Nuestro Color Secundario (Blanco puro) */
+    margin-bottom: 15px;
+}
+
+/* El cuerpo de texto (párrafos, listas, etc.) */
+p, li {
+    font-size: 16px;       /* Tamaño estándar y cómodo para lectura larga */
+    font-weight: 400;      /* Peso normal/liviano para que no canse la vista */
+    line-height: 1.6;      /* Espaciado entre líneas para que no quede todo amontonado */
+    color: #c4c4cc;        /* Gris claro para un contraste suave y legible */
+}
+/* ==========================================================================
+   3. NAVEGACIÓN Y ENLACES (Uso exclusivo de Clases)
+   ========================================================================== */
+
+/* Creamos una clase para nuestros enlaces del menú */
+.enlace-navegacion {
+    color: #ff2e63;           /* Nuestro Color de Acento (Rosa/Fucsia) */
+    text-decoration: none;    /* Le quitamos el subrayado feo de fábrica */
+    font-weight: 700;         /* Hacemos que resalte un poco más */
+    transition: color 0.2s ease; /* Efecto suave cuando cambia de color */
+}
+
+/* El efecto ":hover" define qué pasa cuando el usuario pasa el mouse por encima */
+.enlace-navegacion:hover {
+    color: #00adb5;           /* Cambia al color turquesa al pasar el cursor */
+}
+
+.caja-contenido {
+    flex: 1;                   /* Hace que las dos cajas midan exactamente lo mismo de ancho */
+    padding: 25px;             /* Requisito: Relleno interno para que el texto no pegue al borde */
+    background-color: #202024; /* Les damos un color gris para notar el límite de la caja */
+    border-radius: 8px;        /* Redondeamos las esquinas para que quede más moderno */
+}
+
+.seccion-principal {
+    display: grid; /* Activamos Grid para organizar las cajas de contenido */
+    grid-template-columns: 1fr; /* Requisito: Una sola columna que se adapte al ancho disponible */
+    grid-template-areas:
+     "bienvenida" "enfoque"; /* Requisito: Definimos áreas de grid para cada caja */
+    gap: 30px;
+    padding: 40px 20px 60px 20px; /* Requisito: Espaciado interno para que respire la sección */
+    background-color: #121214; /* Mismo fondo oscuro */
+    
+}
+
+.caja-bienvenida {
+    grid-area: bienvenida; /* Asignamos la caja de bienvenida al área correspondiente */
+}
+
+.caja-enfoque {
+    grid-area: enfoque; /* Asignamos la caja de enfoque al área correspondiente */
+}
+
+/* Controla las secciones que van abajo de las dos columnas de Flexbox */
+.secciones-viejas {
+    display: flex;
+    flex-direction: column; /* Requisito: Las apila una debajo de la otra de forma ordenada */
+    gap: 35px;              /* Espaciado uniforme entre cada bloque de texto */
+    padding: 20px 40px;     /* Aire a los costados para que no pegue a los bordes del monitor */
+    background-color: #121214; /* Mantiene el color oscuro de fondo */
+}
+
+/* ==========================================================================
+    MEDIA QUERY - DESKTOP (1024px en adelante)
+   ========================================================================== */
+@media (min-width: 1024px) {
+    .seccion-principal {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "bienvenida enfoque";
+    }
+}
